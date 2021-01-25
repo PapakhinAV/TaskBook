@@ -1,0 +1,10 @@
+.MainBlock{
+  display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-around; 
+width: 80%;
+padding-top: 15px;
+}
+
+

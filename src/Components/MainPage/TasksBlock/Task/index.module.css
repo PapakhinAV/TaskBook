@@ -1,0 +1,71 @@
+.MainBlock{
+  display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between; 
+width: 80%;
+padding-top: 15px;
+}
+
+.ElementBlockUsername{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 50px;
+width: 20%;
+}
+.ElementBlockEmail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 20%;
+  }
+.ElementBlockTask{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 50px;
+width: 40%;
+flex-wrap: wrap;
+word-break:break-all;
+overflow: hidden;
+	position: relative;
+  height: 62px;
+  
+}
+
+
+.ElementBlockTask:hover{
+  overflow: visible; 
+  z-index: 50;
+  opacity: 1;
+
+}
+
+.ElementBlockStatus{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 50px;
+width: 10%;
+}
+.SortButtons{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-around;
+}
+
+.ButtonSize{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 10%;
+}

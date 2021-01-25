@@ -1,0 +1,18 @@
+.Main{
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  padding-top: 20px;
+  min-width: 700px;
+}
+
+.TaskBlock{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  min-height: 300px;
+  border: solid black 1px;
+  border-radius: 20px;
+  align-items: center;
+  
+}
