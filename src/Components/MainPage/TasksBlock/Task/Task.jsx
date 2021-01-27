@@ -1,15 +1,21 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./index.module.css"
-import { changeTaskStatus, changeTaskText } from "../../../../Redux/ActionsCreator/actions"
+import { changeTaskStatus, changeTaskText, logoutAdmin } from "../../../../Redux/ActionsCreator/actions"
+import { useHistory } from "react-router-dom";
 
 const Task = (props) => {
   const store = useSelector(store => store.Admin_status)
-
+  const history = useHistory()
   const dispatch = useDispatch()
 
+  let textValue = null;
+  if (props.data.text.slice(0, 11) === "!@#Edited: ") {
+    textValue = props.data.text.slice(11)
+  } else { textValue = props.data.text }
+
   const [inputs, setInputs] = useState({
-    text: props.data.text,
+    text: textValue,
   })
 
   function handleChange({ target: { name, value } }) {
@@ -19,13 +25,35 @@ const Task = (props) => {
     })
   }
 
-  function changeStatus(value) {
-    dispatch(changeTaskStatus(value, store, props.data.id, props.setChangeStatus))
+  async function changeStatus(value) {
+
+    try {
+      const storageRedux = localStorage.getItem("redux")
+      const token = await JSON.parse(storageRedux).Admin_status
+      dispatch(changeTaskStatus(value, token, props.data.id, props.setChangeStatus))
+    } catch (error) {
+      alert("Необходима авторизация!")
+      dispatch(logoutAdmin(false))
+      history.push("/login")
+    }
+
+
   }
 
-  function changeText(value) {
-    dispatch(changeTaskText(value, store, props.data.id, props.setChangeStatus))
+  async function changeText(value) {
+    if (textValue !== text) {
+      try {
+        const storageRedux = localStorage.getItem("redux")
+        const token = await JSON.parse(storageRedux).Admin_status
+        dispatch(changeTaskText(value, token, props.data.id, props.setChangeStatus))
+      } catch (error) {
+        alert("Необходима авторизация!")
+        dispatch(logoutAdmin(false))
+        history.push("/login")
+      }
+    }
   }
+
 
   const { text } = inputs
 
@@ -48,16 +76,18 @@ const Task = (props) => {
           </div>
           :
           <div className={styles.ElementBlockTask}>
-            <p>{props.data.text}</p>
+            <p>{textValue}</p>
           </div>
       }
 
       <div className={styles.ElementBlockStatus}>
-
         {status === 10 ?
-          <p>Done</p> :
-          <p>Not Done</p>}
-
+          <div>Done</div> :
+          <div>Not Done</div>}
+        {store && props.data.text.slice(0, 11) === "!@#Edited: " ?
+          <div>Edited</div> :
+          <div></div>
+        }
       </div>
 
       {store && (

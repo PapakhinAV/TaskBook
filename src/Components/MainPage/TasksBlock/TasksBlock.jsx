@@ -23,6 +23,7 @@ const TasksBlock = () => {
       const response = await fetch(`https://uxcandy.com/~shapoval/test-task-backend/v2/?page=${page}&developer=PapakhinAV&sort_direction=${sort_direction}&sort_field=${sort_field}`, {
       })
       const result = await response.json()
+      console.log(result);
       if (result.status === "ok") {
         setAllPages(Math.ceil(result.message.total_task_count / 3))
         dispatch(saveTask(result.message.tasks))

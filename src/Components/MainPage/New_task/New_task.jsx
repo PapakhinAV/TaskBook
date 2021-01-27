@@ -33,12 +33,12 @@ const NewTask = () => {
         <div>Add a new task</div>
         <form onSubmit={saveTask}>
           <div className={styles.newTaskInput}>
-            <label className={styles.newClassLable} htmlFor={"username"} >Username: </label>
-            <input onChange={handleChange} required type="text" id="username" size="30" name="username" placeholder="enter Username" />
-          </div>
-          <div className={styles.newTaskInput}>
             <label className={styles.newClassLable} htmlFor={"email"} >E-mail: </label>
             <input onChange={handleChange} required type="email" id="email" size="30" name="email" placeholder="enter E-mail" />
+          </div>
+          <div className={styles.newTaskInput}>
+            <label className={styles.newClassLable} htmlFor={"username"} >Username: </label>
+            <input onChange={handleChange} required type="text" id="username" size="30" name="username" placeholder="enter Username" />
           </div>
           <div className={styles.newTaskInput}>
             <label className={styles.newClassLable} htmlFor={"taskContent"} >Task: </label>

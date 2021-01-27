@@ -37,6 +37,10 @@ const Login = () => {
       dispatch(changeAdminStatus(result.message.token))
       history.push("/")
     }
+    else {
+      alert("Введен неверный логин или пароль")
+    }
+
   }
 
   return (

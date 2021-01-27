@@ -64,7 +64,7 @@ export const changeTaskStatus = (value, token, TaskID, setChangeStatus) => async
 export const changeTaskText = (value, token, TaskID, setChangeStatus) => async (dispatch, getState) => {
   try {
     const formData = new FormData()
-    formData.append("text", `Edited by Admin: ${value}`)
+    formData.append("text", `!@#Edited: ${value}`)
     formData.append("token", token)
     const response = await fetch(`https://uxcandy.com/~shapoval/test-task-backend/v2/edit/${TaskID}?developer=PapakhinAV`, {
       method: 'POST',
